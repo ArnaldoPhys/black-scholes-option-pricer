@@ -1,8 +1,8 @@
-#Black Scholes Equation Simulation and Exploration
+## Black Scholes Equation Simulation and Exploration
 
 This project consists of an implementation of the Black Scholes PDE, its closed form solution, and an exploration of the finite difference method of solving the equation numerically. 
 
-#Motivation and Background
+## Motivation and Background
 
 This project exists in order to explore the Black Scholes equation (BSE). The BSE is the differential equation at the heart of modern quantitative finance, modeled after the heat equation. BSE determines the price of a stock option based on the parameters of the base stock price, strike price, time to expiry, interest rate, and volatility. The statement of the BSE is as follows
 
@@ -62,7 +62,7 @@ It is however important to know how the error changes as we increase the fidelit
 
 Since Crank-Nicolson is second order accurate in both stock price and time, we expect the error to go as $ \text{error} \sim O(\Delta S^2)$ and $ \text{error} \sim O(\Delta t^2)$. 
 
-#Project Structure
+## Project Structure
 
 Black Scholes/
 ├── black_scholes.py      # closed form pricer and put-call parity
@@ -71,7 +71,7 @@ Black Scholes/
 ├── visualize.py          # plots
 └── main.py               # entry point
 
-#Results
+## Results
 ![Summary Plots](plots/summary.png)
 When running the program we find the following:
 
@@ -83,17 +83,17 @@ The spatial convergence shows a distinct kink at around the strike price, this i
 The temporal convergence behaves exactly as predicted, with a slope of 2.01, after isolating the spatial error from the computation. 
 Finally we have a list of calculated and defined parameters, here we see the closed form and simulated option price agree to 4 decimals and the values for gamma and delta being within bounds of what is expected of a slightly out of the money option.
 
-#Key Findings
+## Key Findings
 
 - the Crank-Nicolson and BSE price agree to 4 decimal places
 - Second order temporal convergence is confirmed with second order spatial convergence showing an expected kink due to non-smooth payoff
 - Greeks are consistent with analytical values
 
-#Dependencies and How to Run
+## Dependencies and How to Run
 
 pip install numpy scipy matplotlib
 python main.py
 
-#Future Extensions
+## Future Extensions
 
 Future extensions to consider would be some of the following: Extending the analysis to American Options, introducing stochastic volatility to justify the Crank-Nicolson approach, or implement Rannacher smoothing to see the proper spatial convergence. 
