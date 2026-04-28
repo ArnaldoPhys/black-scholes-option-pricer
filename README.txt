@@ -72,7 +72,7 @@ Black Scholes/
 └── main.py               # entry point
 
 Results
-
+![Summary Plots](plots/summary.png)
 When running the program we find the following:
 
 The closed form solution and the Crank-Nicolson method both are in solid agreement on the options price. This tells us that our grid was sufficiently discretized in order to minimize errors and shows that the Crank-Nicolson method is valid for the ideal case of BSE. 
