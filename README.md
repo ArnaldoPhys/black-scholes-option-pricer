@@ -60,7 +60,7 @@ The final component of this project at the time of writing is the convergence an
 
 It is however important to know how the error changes as we increase the fidelity of the simulation, in this case as we make the grid finer. This can be done by scaling the number of grid steps, N and/or M for stock price and time respectively, while holding all other quantities constant, then checking the value against the ideal options price for the error in stock price S. For the temporal convergence we used a finer grid solution as the reference in order to isolate the temporal error from the dominant spatial error. 
 
-Since Crank-Nicolson is second order accurate in both stock price and time, we expect the error to go as $ \text{error} \sim O(\Delta S^2) \quad \text{error} \sim O(\Delta t^2) $. 
+Since Crank-Nicolson is second order accurate in both stock price and time, we expect the error to go as $$ \text{error} \sim O(\Delta S^2) \quad \text{error} \sim O(\Delta t^2) $$. 
 
 ## Project Structure
 ```
@@ -78,7 +78,7 @@ When running the program we find the following:
 The closed form solution and the Crank-Nicolson method both are in solid agreement on the options price. This tells us that our grid was sufficiently discretized in order to minimize errors and shows that the Crank-Nicolson method is valid for the ideal case of BSE. 
 We see the correct behavior for Delta as the stock price increases, leveling off at high values as the options price and stock price begin to move dollar for dollar, as well as leveling off at low values as the stock becomes so out of the money that the option is practically worthless. 
 For gamma we see that the peak is at 93.9 rather than at the strike price of K=105. 
-This is expected of an option that is slightly out of the money and is inline with the theoretical prediction of $ S = Ke^{(-r+\frac{3}{2}\sigma^2 T)} \approx 93.9 $
+This is expected of an option that is slightly out of the money and is inline with the theoretical prediction of $$ S = Ke^{(-r+\frac{3}{2}\sigma^2 T)} \approx 93.9 $$
 The spatial convergence shows a distinct kink at around the strike price, this is a known characteristic of Crank-Nicolson when applied to non-smooth initial conditions. The derivative being discontinuous at the strike is due to the behavior of the option shifting from being in and out of the money, disrupting the order of the convergence. This can be resolved via Rannacher smoothing, but that is left to a future extension. 
 The temporal convergence behaves exactly as predicted, with a slope of 2.01, after isolating the spatial error from the computation. 
 Finally we have a list of calculated and defined parameters, here we see the closed form and simulated option price agree to 4 decimals and the values for gamma and delta being within bounds of what is expected of a slightly out of the money option.
