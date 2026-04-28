@@ -92,6 +92,7 @@ Finally we have a list of calculated and defined parameters, here we see the clo
 ## Dependencies and How to Run
 
 pip install numpy scipy matplotlib
+
 python main.py
 
 ## Future Extensions
