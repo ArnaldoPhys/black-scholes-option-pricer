@@ -6,7 +6,7 @@ Motivation and Background
 
 This project exists in order to explore the Black Scholes equation (BSE). The BSE is the differential equation at the heart of modern quantitative finance, modeled after the heat equation. BSE determines the price of a stock option based on the parameters of the base stock price, strike price, time to expiry, interest rate, and volatility. The statement of the BSE is as follows
 
-```math \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0 ```
+$$ \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0 $$
 
 Where S is the stock price, V is the options price, which satisfies the payoff condition at expiry, $\sigma$ is the volatility, T is the time to expiry and r is the interest rate. 
 
