@@ -12,12 +12,12 @@ Where S is the stock price, V is the options price, which satisfies the payoff c
 
 BSE has a closed form solution, however it relies on multiple assumptions, namely that the portfolio is hedged continuously, that the options in question are European options rather than American, and that volatility is constant. The ideal closed form solution is given as:
 
-```math C = S N(d_1) - Ke^{-rT} N(d_2), \qquad P = Ke^{-rT} N(-d_2) - S N(-d_1) ```
+$$ C = S N(d_1) - Ke^{-rT} N(d_2), \qquad P = Ke^{-rT} N(-d_2) - S N(-d_1) $$
 
 Where:
 
-```math d_1 = \frac{\ln(S/K) + (r + \frac{1}{2}\sigma^2)T}{\sigma \sqrt{T}} ```
-```math d_2 = d_1 - \sigma \sqrt{T} ```
+$$ d_1 = \frac{\ln(S/K) + (r + \frac{1}{2}\sigma^2)T}{\sigma \sqrt{T}} $$
+$$ d_2 = d_1 - \sigma \sqrt{T} $$
 
 And N is the cumulative normal distribution function. 
 
@@ -25,7 +25,7 @@ In practice real markets show a volatility smile, causing the assumption of cons
 
 The numerical method employed in this code is the finite difference, or Crank-Nicolson discretization, method. In these methods we consider a 2-D grid with the stock price S on one axis and time t on the other axis, running from today at t = 0 to expiry at t = T. We then impose the following boundary conditions
 
-```math V(S, T) = max(S-K, 0), \quad V(0, t) = 0, \quad S = S_{max} \implies V = S_{max} - Ke^{-r(T-t)} ```
+$$ V(S, T) = max(S-K, 0), \quad V(0, t) = 0, \quad S = S_{max} \implies V = S_{max} - Ke^{-r(T-t)} $$
 
 Meaning that 
 
@@ -35,15 +35,15 @@ Meaning that
 
 From there we replace the partial derivatives with finite differences after discretizing the grid with steps $\Delta S$ and $\Delta t$. 
 
-```math \frac{\partial V}{\partial t} \approx \frac{V_{i, j+1} - V_{i, j}}{\Delta t} ```
-```math \frac{\partial V}{\partial S} \approx \frac{V_{i+1, j} - V_{i-1, j}}{2 \Delta S} ```
-```math \frac{\partial^2 V}{\partial S^2} \approx \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{ \Delta S^2} ```
+$$ \frac{\partial V}{\partial t} \approx \frac{V_{i, j+1} - V_{i, j}}{\Delta t} $$
+$$ \frac{\partial V}{\partial S} \approx \frac{V_{i+1, j} - V_{i-1, j}}{2 \Delta S} $$
+$$ \frac{\partial^2 V}{\partial S^2} \approx \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{ \Delta S^2} $$
 
 This reduces the problem to a tridiagonal linear system of the form $Av^j = Bv^{j+1}$ where A and B are tridiagonal matrices and $v^{j+1}$ is the known solution at the previous time step. These matrices are composed of 3 vectors, $\alpha, \beta, \gamma$ that are placed along the central three diagonals. 
 
-```math \alpha_i = \frac{1}{4} \Delta t (\sigma^2 i^2 - ri) ```
-```math \beta_i = -\frac{1}{2}\Delta t (\sigma^2 i^2 +r) ```
-```math \gamma_i = \frac{1}{4}\Delta t (\sigma^2  i^2 + ri) ```
+$$ \alpha_i = \frac{1}{4} \Delta t (\sigma^2 i^2 - ri) $$
+$$ \beta_i = -\frac{1}{2}\Delta t (\sigma^2 i^2 +r) $$
+$$ \gamma_i = \frac{1}{4}\Delta t (\sigma^2  i^2 + ri) $$
 
 The matrices A and B are then built using these vectors as follows
 
