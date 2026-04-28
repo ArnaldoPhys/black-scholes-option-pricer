@@ -60,7 +60,7 @@ The final component of this project at the time of writing is the convergence an
 
 It is however important to know how the error changes as we increase the fidelity of the simulation, in this case as we make the grid finer. This can be done by scaling the number of grid steps, N and/or M for stock price and time respectively, while holding all other quantities constant, then checking the value against the ideal options price for the error in stock price S. For the temporal convergence we used a finer grid solution as the reference in order to isolate the temporal error from the dominant spatial error. 
 
-Since Crank-Nicolson is second order accurate in both stock price and time, we expect the error to go as $ \text{error} \sim O(\Delta S^2)$ and $ \text{error} \sim O(\Delta t^2)$. 
+Since Crank-Nicolson is second order accurate in both stock price and time, we expect the error to go as $ \text{error} \sim O(\Delta S^2) \quad \text{error} \sim O(\Delta t^2) $. 
 
 ## Project Structure
 ```
