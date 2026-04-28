@@ -63,14 +63,14 @@ It is however important to know how the error changes as we increase the fidelit
 Since Crank-Nicolson is second order accurate in both stock price and time, we expect the error to go as $ \text{error} \sim O(\Delta S^2)$ and $ \text{error} \sim O(\Delta t^2)$. 
 
 ## Project Structure
-
+```
 Black Scholes/
 ├── black_scholes.py      # closed form pricer and put-call parity
 ├── finite_difference.py  # Crank-Nicolson PDE solver
 ├── greeks.py             # Delta and Gamma
 ├── visualize.py          # plots
 └── main.py               # entry point
-
+```
 ## Results
 ![Summary Plots](plots/summary.png)
 When running the program we find the following:
